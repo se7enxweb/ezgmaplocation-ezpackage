@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS `ezgmaplocation` (
   `longitude` double NOT NULL default 0,
   `address` varchar(150) default NULL,
   PRIMARY KEY ( `contentobject_attribute_id`, `contentobject_version` )
+);
   --,
   --PRIMARY KEY `latitude_longitude_key` ( `latitude`,`longitude` )
-);
