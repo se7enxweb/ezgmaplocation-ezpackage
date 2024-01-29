@@ -17,7 +17,7 @@
         "se7enxweb/ezflow": "~6.0.0",
         "se7enxweb/ezwebin": "~6.0.0",
         "se7enxweb/ezdemo": "~6.0.0"
-    se7enxweb
+    },
     "extra": {
         "ezpublish-legacy-extension-name": "ezgmaplocation"
     }
