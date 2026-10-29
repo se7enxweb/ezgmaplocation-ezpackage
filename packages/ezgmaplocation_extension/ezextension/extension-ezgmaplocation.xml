@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension name="ezgmaplocation">
-  <file name="CHANGELOG.txt" md5sum="a3ae3e372a0df234dd41de37e523094f"/>
-  <file name="LICENSE" md5sum="09e5ab0a2578bb8948c4cf98eba08b02"/>
+  <file name="CHANGELOG.txt" md5sum="bd57c7e522d7f915a4ecd211581c3d92"/>
+  <file name="LICENSE" md5sum="eee5f9135e5b658adce09e7e046c881f"/>
   <file name="README" md5sum="3a8c4a9d876d808d53f24a9505b6c238"/>
   <file name="bin" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
   <file name="php" path="/bin" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
-  <file name="decodeaddressentities.php" path="/bin/php" md5sum="e660b3687a1916c62db6d8907a199242"/>
+  <file name="decodeaddressentities.php" path="/bin/php" md5sum="8def512d14777d1df1460bd2dc1ad038"/>
   <file name="classes" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
-  <file name="ezgmaplocation.php" path="/classes" md5sum="78b58572516927948e4d80ca2125de5e"/>
-  <file name="ezgmllocationfilter.php" path="/classes" md5sum="d2ca8a03001df7049db8a894741e8b22"/>
+  <file name="ezgmaplocation.php" path="/classes" md5sum="b4a205b6e56b95bb10b5cc7935547665"/>
+  <file name="ezgmllocationfilter.php" path="/classes" md5sum="d63bcc278886ff3dbc66ee0a047ce083"/>
   <file name="composer.json" md5sum="06c90de051837f41928a1c398a5c9aa1"/>
   <file name="datatypes" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
   <file name="ezgmaplocation" path="/datatypes" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
-  <file name="ezgmaplocationtype.php" path="/datatypes/ezgmaplocation" md5sum="491437c53b1b03519d1994c3b3b779ef"/>
+  <file name="ezgmaplocationtype.php" path="/datatypes/ezgmaplocation" md5sum="ba2f26f48bfc04b7c7f14a3d8cf15cf0"/>
   <file name="design" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
   <file name="standard" path="/design" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
   <file name="javascript" path="/design/standard" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
@@ -39,8 +39,8 @@
   <file name="SETTINGS.md" path="/doc" md5sum="3c4f231a7807726f62acecc5e46ec3b8"/>
   <file name="TESTING.md" path="/doc" md5sum="db87c0caf1762f4ac5eae92e9528127a"/>
   <file name="UPGRADING.md" path="/doc" md5sum="ae857903077f3da59473770a81052e67"/>
-  <file name="extension.xml" md5sum="13f80b77dd0b6ad4f582c7b3a3dbccfb"/>
-  <file name="ezinfo.php" md5sum="ad4b42a4997d239d508e3d7b55f24117"/>
+  <file name="extension.xml" md5sum="05057dd7a3457a25022c9d699658f1df"/>
+  <file name="ezinfo.php" md5sum="4f390041756cbf7683952f8f81679b8c"/>
   <file name="settings" md5sum="d41d8cd98f00b204e9800998ecf8427e" type="dir"/>
   <file name="content.ini.append.php" path="/settings" md5sum="9d4f05a1ffa5fcb54832194f12748ef8"/>
   <file name="datatype.ini.append.php" path="/settings" md5sum="a61e3a5a24f283d9edd3dc6db07ef584"/>
