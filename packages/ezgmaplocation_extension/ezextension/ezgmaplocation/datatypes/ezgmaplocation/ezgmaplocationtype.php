@@ -4,6 +4,7 @@
 //
 // SOFTWARE NAME: Blend Gmap Location Class
 // SOFTWARE RELEASE: 0.5
+// COPYRIGHT NOTICE: Copyright (C) 1998 - 2026 7x & Exponential Foundation
 // COPYRIGHT NOTICE: Copyright (C) 2006-2009 Blend Interactive, 1999-2014 eZ Systems AS
 // SOFTWARE LICENSE: GNU General Public License v2.0
 // NOTICE: >
@@ -113,8 +114,9 @@ class eZGmapLocationType extends eZDataType
             $address = '';
         	if ( $http->hasPostVariable( $base . '_data_gmaplocation_address_' . $contentObjectAttribute->attribute( 'id' ) ) )
             {
+                // Stored as typed; the templates escape it on output. htmlentities() here put entities into the
+                // search index, the sort key and the object name, while fromString() stored plain text anyway.
                 $address = $http->postVariable( $base . '_data_gmaplocation_address_' . $contentObjectAttribute->attribute( 'id' ) );
-                $address = htmlentities( $address, ENT_QUOTES , 'UTF-8' );
             }
 
             if ( $contentObjectAttribute->attribute( 'data_int' ) != 0 )
@@ -295,7 +297,20 @@ class eZGmapLocationType extends eZDataType
      */
     function fromString( $contentObjectAttribute, $string )
     {
-    	$data = $string !== '' && strpos( $string, '|#' ) !== false ? explode( '|#', $string ) : array( 0 );
+    	// At most four parts: an address that contains "|#" itself is kept whole instead of cut at it
+    	$data = $string !== '' && strpos( $string, '|#' ) !== false ? explode( '|#', $string, 4 ) : array( 0 );
+        // has_content, latitude, longitude and address. Without the address the coordinates are kept with an
+        // empty one; a string without both coordinates stores nothing (it read undefined keys). The coordinates
+        // must be numbers, as the edit form requires: the view templates write them into a script unescaped.
+        if ( count( $data ) === 3 )
+            $data[] = '';
+        if ( count( $data ) < 4 || !is_numeric( trim( $data[1] ) ) || !is_numeric( trim( $data[2] ) ) )
+            $data = array( 0 );
+        else
+        {
+            $data[1] = (float)trim( $data[1] );
+            $data[2] = (float)trim( $data[2] );
+        }
 
     	if ( $data[0] != 0 )
     	{

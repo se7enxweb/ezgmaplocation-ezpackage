@@ -21,9 +21,10 @@ eZ Publish installation.
 'Setup' tab in the eZ publish admin interface.
 And update the autoload array by clicking "Regenerate autoload arrays for extensions"
 
-4.) Add your GmapsKey to the site.ini under [SiteSettings] like so:
-GMapsKey=<Long string of characters from Google>
-(You can do this per siteaccess if you want)
+4.) Add your Google Maps JavaScript API key to ezgmaplocation.ini [GMapSettings] ApiKey
+(settings/override/ezgmaplocation.ini.append.php, or per siteaccess). Without a key
+the edit form and the view load no Google script and show the coordinates without
+a map. (The old site.ini [SiteSettings] GMapsKey is not read.)
 
 5.) Apply the ezgmaplocation table to your database with the included sql file:
 <eZP root>/extension/ezgmaplocation/sql/mysql/mysql.sql
@@ -33,6 +34,20 @@ Sql files are also provided for postgresql and oracle - refer to the
 database documentation on how to execute queries from a command-line clients
 
 6.) Now you can add the ezgmaplocation datatype like any other datatype when editing classes.
+
+
+Upgrade from 6.0.7 or earlier (required)
+---------------
+Earlier versions stored the address with HTML entities ("M&uuml;llerstra&szlig;e 5"); this version stores
+it as typed and escapes it on output. Before editors work with the new version, decode the stored rows
+once per database (siteaccess):
+
+    php extension/ezgmaplocation/bin/php/decodeaddressentities.php -s <siteaccess>          (dry run: lists the rows)
+    php extension/ezgmaplocation/bin/php/decodeaddressentities.php -s <siteaccess> --apply
+
+Check the dry-run list first: rows that were never encoded (package import, fromString()) and hold a
+literal "&xxx;" are decoded as well. Run it once only; addresses saved after the upgrade are stored as
+typed. Search index, sort key and object names follow on the next publish or a reindex.
 
 
 Use (editing)
@@ -72,3 +87,9 @@ results based on how close the nodes are to the given coordinates.
  Also see 'arccosine' parameter in combination with 'as_object', false() to be able to get value to easily calculate distance.
  Example use: user x is 2,5 km away from you. Or Oslo, Norway is 416.8km from Stockholm, Sweden.
 
+
+
+Content Security Policy
+---------------
+See doc/CSP.md (with the settings in doc/SETTINGS.md and the Google setup in
+doc/GOOGLE_SETUP.md). Without an ApiKey nothing from Google is loaded.
